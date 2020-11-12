@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 plt.rcParams.update({'figure.max_open_warning': 0})
 import io, os
 import numpy as np
-from menu import mainMenu, sizeMenu
+from menu import mainMenu, sizeMenu, codecMenu
 from progress.bar import IncrementalBar
 
 def cutVideo(s1, s2, inputFile):
@@ -100,9 +100,9 @@ def resizeVideo(value, videoFile):
         os.system("ffmpeg -i {} -vf scale={}:{} BBB_{}x{}.mp4".format(videoFile, value[0], value[1], value[0], value[1]))
 
 
-def changeCodecAndMono(videoFile):
+def changeCodecAndMono(videoFile, codec):
 
-    os.system("ffmpeg -i {} -vcodec copy -acodec mp3 BBB_codecChanged.mp4".format(videoFile))
+    os.system("ffmpeg -i {} -vcodec copy -acodec {} BBB_codecChanged.mp4".format(videoFile, codec))
     os.system("ffmpeg -i BBB_codecChanged.mp4 -ac 1 BBB_Mono.mp4")
 
 
@@ -150,7 +150,10 @@ if __name__ == "__main__":
 
     elif action == 'Change audio codec + mono':
 
-        changeCodecAndMono(videoFile)
+        cMenu = codecMenu()
+        codec = cMenu['codec']
+
+        changeCodecAndMono(videoFile, codec)
 
     else:
 
