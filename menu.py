@@ -42,3 +42,15 @@ def sizeMenu():
     ]
 
     return prompt(menuOpts)
+
+def codecMenu():
+
+    menuOpts = [
+        {
+            'type': 'input',
+            'name': 'codec',
+            'message': 'Introduce the wanted codec'
+        }
+    ]
+
+    return prompt(menuOpts)
