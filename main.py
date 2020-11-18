@@ -111,7 +111,6 @@ if __name__ == "__main__":
 
     menu = mainMenu()
     action = menu['Action menu']
-    print (menu)
     videoFile = menu['video file']
 
     if action == 'Cut video':
